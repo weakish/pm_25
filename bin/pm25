@@ -1,0 +1,13 @@
+require 'pm25'
+
+if ARGV.empty?
+  city = ENV['PM25_IN_CITY']
+else
+  city = ARGV[0]
+end
+
+pm25_info = PM25.pm25_level(PM25.just_pm25(city, ENV['PM25_IN_TOKEN']))
+
+puts "#{city}: #{pm25_info[:pm25]}, #{pm25_info[:category]}"
+puts pm25_info[:meaning]
+puts pm25_info[:action]
