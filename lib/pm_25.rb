@@ -1,4 +1,4 @@
-require 'pm25/version'
+require 'pm_25/version'
 
 require 'nokogiri'
 require 'json'
@@ -55,6 +55,7 @@ module PM25
   # @param [Hash] params (additional) options
   # @return [Hash] result
   # @return [Fixnum] error code
+  # TODO pm25.in tends to 502, need to email complaints and handle this.
   def access_api(interface, params={})
     params[:token] ||= get_token
     res = RestClient.get(API_base + interface, {params: params})

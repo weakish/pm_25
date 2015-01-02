@@ -7,7 +7,7 @@ A Ruby wrapper for pm25.in API and other PM 2.5 related utility functions.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pm25'
+gem 'pm_25'
 ```
 
 And then execute:
@@ -16,12 +16,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pm25
+    $ gem install pm_25
 
 ## Usage
 
 ```ruby
-require 'pm25'
+require 'pm_25'
 PM25.Func(args)
 ```
 

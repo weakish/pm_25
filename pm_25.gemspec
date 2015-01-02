@@ -1,23 +1,23 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pm25/version'
+require 'pm_25/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'pm25'
+  spec.name          = 'pm_25'
   spec.version       = PM25::VERSION
   spec.authors       = ['Jakukyo Friel']
   spec.email         = ['weakish@gmail.com']
   spec.summary       = %q{Fetch PM 2.5 data in China.}
   spec.description   = %q{A Ruby wrapper for pm25.in API and other PM 2.5
 related utility functions.}
-  spec.homepage      = 'https://github.com/weakish/pm25'
+  spec.homepage      = 'https://github.com/weakish/pm_25'
   spec.license       = 'MIT'
   spec.metadata      = {
-      'repository' => 'https://github.com/weakish/pm25.git',
-      'documentation' => 'http://www.rubydoc.info/gems/pm25/',
-      'issues' => 'https://github.com/weakish/pm25/issues/',
-      'wiki' => 'https://github.com/weakish/wiki/'
+      'repository' => 'https://github.com/weakish/pm_25.git',
+      'documentation' => 'http://www.rubydoc.info/gems/pm_25/',
+      'issues' => 'https://github.com/weakish/pm_25/issues',
+      'wiki' => 'https://github.com/weakish/pm_25/wiki'
   }
 
   spec.files         = `git ls-files -z`.split("\x0")
