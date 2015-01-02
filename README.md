@@ -91,20 +91,19 @@ We also provide a command line utility to query PM 2.5 info for the
 specified city:
 
 ```sh
-PM25_IN_TOKEN='your_token' pm25 北京
+; PM25_IN_TOKEN='your_token' pm25 北京
+北京: 106, Unhealthy
+Everyone may begin to experience health effects; members of sensitive groups may
+experience more serious health effects.
+People with heart or lung disease, children and older adults should avoid
+prolonged or heavy exertion. Everyone else should reduce prolonged or heavy
+exertion.
 ```
 
 If you does not provide a city argument, it will use environment variable `PM25_IN_CITY`.
 
 If something goes wrong with pm25.in, (say, you does not provide a token), it
  will use bing.com instead.
-
-The output is:
-
-- PM 2.5 value
-- AQI category (according to US standard)
-- AQI category meaning
-- suggested action
 
 ## Contributing
 
