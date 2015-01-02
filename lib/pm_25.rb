@@ -219,9 +219,9 @@ module PM25
       aqi_meaning = 'Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.'
       aqi_action = 'Unusually sensitive people should consider reducing prolonged or heavy exertion.'
     elsif pm25 <= 55.4
-    aqi_category = 'Unhealthy for sensitive Groups'
-    aqi_meaning = 'Members of sensitive groups may experience health effects. The general public is not likely to be affected.'
-    aqi_action = 'People with heart or lung disease, children and older adults should reduc e prolonged or heavy exertion'
+      aqi_category = 'Unhealthy for sensitive Groups'
+      aqi_meaning = 'Members of sensitive groups may experience health effects. The general public is not likely to be affected.'
+      aqi_action = 'People with heart or lung disease, children and older adults should reduc e prolonged or heavy exertion'
     elsif pm25 <= 150.4
       aqi_category = 'Unhealthy'
       aqi_meaning = 'Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.'
