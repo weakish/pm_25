@@ -1,5 +1,7 @@
 # Pm25
 
+[![Gem Version](https://badge.fury.io/rb/pm_25.svg)](http://badge.fury.io/rb/pm_25)
+
 A Ruby wrapper for pm25.in API and other PM 2.5 related utility functions.
 
 ## Installation
