@@ -1,4 +1,4 @@
-require 'pm25'
+require 'pm_25'
 
 if ARGV.empty?
   city = ENV['PM25_IN_CITY']
