@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>pm_25 by weakish</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>pm_25</h1>
+        <h2>fetch PM 2.5 data in China via pm25.in and bing.com</h2>
+        <a href="https://github.com/weakish/pm_25" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="pm25" class="anchor" href="#pm25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pm25</h1>
+
+<p><a href="http://badge.fury.io/rb/pm_25"><img src="https://badge.fury.io/rb/pm_25.svg" alt="Gem Version"></a></p>
+
+<p>A Ruby wrapper for pm25.in API and other PM 2.5 related utility functions.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">'</span>pm_25<span class="pl-pds">'</span></span></pre></div>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install pm_25
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">require</span> <span class="pl-s"><span class="pl-pds">'</span>pm_25<span class="pl-pds">'</span></span>
+<span class="pl-c1">PM25</span>.<span class="pl-c1">Func</span>(args)</pre></div>
+
+<p>The following APIs of pm25.in are implemented:</p>
+
+<ul>
+<li>1.1 <code>pm25</code> Get PM 2.5 info of all stations in the specified city.</li>
+<li>1.11 <code>available_cities</code> Get a list of cites providing PM 2.5 data.</li>
+<li>1.12 <code>all_cities</code> Get PM 2.5 data for all cities.</li>
+<li>1.13 <code>aqi_ranking</code> Get average data for all cities. (Cities are sorted by
+AQI.)</li>
+</ul>
+
+<p><code>1.1</code>, <code>1.11</code> etc are for reference of <a href="http://www.pm25.in/api_doc">pm25.in official api
+documentation</a>.</p>
+
+<p>I only implemented APIs I care, and I guess in most cases these are the APIs
+you actually want to use.</p>
+
+<p>However, if you do need other APIs, feel free to send a pull request.
+You can use <code>PM25.access_api</code>. (Actually implementing other APIs is trivial
+with this.)</p>
+
+<p>pm25.in requires a token to access its api.
+You can apply one at <a href="http://www.pm25.in/api_doc">here</a>.</p>
+
+<p><code>pm25</code> will look for a token in the following order:</p>
+
+<ul>
+<li>Token argument when invoking functions.</li>
+<li>Environment virable <code>PM25_IN_TOKEN</code>
+</li>
+<li>
+<code>"PM25_IN_TOKEN": 'your_token'</code> in <code>config.json</code> at the current directory.</li>
+<li>The default test token at <a href="http://www.pm25.in/api_doc">pm25.in official api documentation</a>.</li>
+</ul>
+
+<p>Note that the test token is barely usable (too many people use it).</p>
+
+<p>If you does not have a token, you can use <code>bing_pm25</code> to get the average
+PM 2.5 value for the specified city.
+This function uses data from bing.com, thus does not need a token.
+For example:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c1">PM25</span>.bing_pm25 <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span></pre></div>
+
+<p>pm25.in uses CN standard for AQI category.
+If you want to use US standard instead, use <code>pm25_level</code>.
+For example:</p>
+
+<div class="highlight highlight-source-ruby"><pre><span class="pl-c1">PM25</span>.pm25_level(<span class="pl-c1">123</span>)</pre></div>
+
+<p>It will return a hash containing:</p>
+
+<ul>
+<li>PM 2.5 value</li>
+<li>AQI category</li>
+<li>AQI category meaning</li>
+<li>suggested action</li>
+</ul>
+
+<p>For other functions and usage details, check API documentation:</p>
+
+<p><a href="http://www.rubydoc.info/gems/pm_25/">http://www.rubydoc.info/gems/pm_25/</a></p>
+
+<h3>
+<a id="command-line-usage" class="anchor" href="#command-line-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Command line usage</h3>
+
+<p>We also provide a command line utility to query PM 2.5 info for the
+specified city:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">;</span> PM25_IN_TOKEN=<span class="pl-s"><span class="pl-pds">'</span>your_token<span class="pl-pds">'</span></span> pm25 北京
+北京: 106, Unhealthy
+Everyone may begin to experience health effects<span class="pl-k">;</span> members of sensitive groups may
+experience more serious health effects.
+People with heart or lung disease, children and older adults should avoid
+prolonged or heavy exertion. Everyone <span class="pl-k">else</span> should reduce prolonged or heavy
+exertion.</pre></div>
+
+<p>If you does not provide a city argument, it will use environment variable <code>PM25_IN_CITY</code>.</p>
+
+<p>If something goes wrong with pm25.in, (say, you does not provide a token), it
+ will use bing.com instead.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it ( <a href="https://github.com/weakish/pm_25/fork">https://github.com/weakish/pm_25/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/weakish/pm_25/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/weakish/pm_25/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/weakish/pm_25"></a> is maintained by <a href="https://github.com/weakish">weakish</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
