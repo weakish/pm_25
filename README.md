@@ -40,7 +40,7 @@ documentation][api_doc].
 
 [api_doc]: http://www.pm25.in/api_doc
 
-I only implemented APIs I care, and I guess in most cases these is the APIs
+I only implemented APIs I care, and I guess in most cases these are the APIs
 you actually want to use.
 
 However, if you do need other APIs, feel free to send a pull request.
@@ -85,7 +85,7 @@ It will return a hash containing:
 
 For other functions and usage details, check API documentation:
 
-http://www.rubydoc.info/gems/pm25/
+http://www.rubydoc.info/gems/pm_25/
 
 ### Command line usage
 
@@ -109,7 +109,7 @@ If something goes wrong with pm25.in, (say, you does not provide a token), it
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/pm25/fork )
+1. Fork it ( https://github.com/weakish/pm_25/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
